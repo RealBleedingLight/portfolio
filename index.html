@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leo — Product Manager & Builder</title>
+  <meta name="description" content="Portfolio of Leo — Product Manager building tools at the intersection of puzzle-solving, music, and AI." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">leo<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="container hero-content">
+      <p class="hero-label fade-up">Product Manager & Builder</p>
+      <h1 class="fade-up delay-1">
+        I build tools that<br />
+        solve <span class="highlight">real problems</span>.
+      </h1>
+      <p class="hero-description fade-up delay-2">
+        From puzzle-solving toolkits to AI-powered music learning — I identify gaps, design solutions, and ship products that people actually want to use.
+      </p>
+      <div class="hero-cta fade-up delay-3">
+        <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+        <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Project 1: Cipher & Signal -->
+  <section class="project-section" id="projects">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label cyan">Project 01</p>
+        <h2 class="section-title">Cipher &amp; Signal</h2>
+        <p class="section-description">
+          A browser-based puzzle-solving suite for CTF players, ARG hunters, and web riddle enthusiasts. Zero tracking — your data never leaves your browser.
+        </p>
+      </div>
+
+      <div class="project-card fade-up delay-1">
+        <div class="project-header">
+          <h3 class="project-name" style="color: var(--accent-cyan);">◆ Cipher &amp; Signal</h3>
+          <p class="project-tagline">Image analysis · Audio forensics · Classical ciphers · Research notebook</p>
+        </div>
+        <div class="project-body">
+
+          <div class="project-why">
+            <h4>Why I Built This</h4>
+            <p>
+              Puzzle communities — from Cicada 3301 to modern ARGs — rely on scattered, janky tools that haven't been updated in years. I wanted a single, modern workspace where you could analyze an image for hidden data, decode a cipher, run frequency analysis on audio, and keep notes on your progress, all without switching tabs or uploading sensitive files to random servers. Privacy-first, completely client-side.
+            </p>
+          </div>
+
+          <h4 style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem;">Core Capabilities</h4>
+          <div class="features-grid">
+            <div class="feature-item cyan">
+              <div class="feature-icon">◐</div>
+              <h5>Image Suite</h5>
+              <p>Brightness, contrast, RGB channels, steganography, LSB extraction, EXIF metadata, bit-plane analysis</p>
+            </div>
+            <div class="feature-item cyan">
+              <div class="feature-icon">◠</div>
+              <h5>Audio Lab</h5>
+              <p>Waveform &amp; spectrogram visualization, reverse playback, DTMF detection, frequency analysis</p>
+            </div>
+            <div class="feature-item cyan">
+              <div class="feature-icon">◆</div>
+              <h5>Cipher Engine</h5>
+              <p>Caesar, Vigenère, Atbash, Rail Fence, XOR brute-force, Affine, Beaufort, substitution</p>
+            </div>
+            <div class="feature-item cyan">
+              <div class="feature-icon">◇</div>
+              <h5>Encoding Hub</h5>
+              <p>Base64/32, hex, binary, URL, HTML entities, SHA/MD5 hashing, auto-detect decoder</p>
+            </div>
+            <div class="feature-item cyan">
+              <div class="feature-icon">◈</div>
+              <h5>Visual Ciphers</h5>
+              <p>Morse, Braille, Pigpen, Semaphore, NATO phonetic, Tap code, Bacon's cipher</p>
+            </div>
+            <div class="feature-item cyan">
+              <div class="feature-icon">◳</div>
+              <h5>Puzzle Notebook</h5>
+              <p>Track puzzles across platforms, record solutions, markdown notes, JSON export/import</p>
+            </div>
+          </div>
+
+          <div class="tech-stack">
+            <span class="tech-pill cyan">JavaScript</span>
+            <span class="tech-pill cyan">CSS</span>
+            <span class="tech-pill cyan">HTML</span>
+            <span class="tech-pill cyan">Client-Side Only</span>
+            <span class="tech-pill cyan">Vercel</span>
+          </div>
+
+          <div class="roadmap">
+            <h4>Future Roadmap</h4>
+            <div class="roadmap-items">
+              <div class="roadmap-item">
+                <span class="roadmap-dot cyan"></span>
+                <span>Collaborative puzzle-solving with shared notebooks and real-time sync</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-dot cyan"></span>
+                <span>AI-assisted pattern recognition for cipher identification</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-dot cyan"></span>
+                <span>Browser extension for quick analysis of images/text on any webpage</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-dot cyan"></span>
+                <span>Community cipher challenge platform with leaderboards</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-links">
+            <a href="https://unravel-delta.vercel.app/" target="_blank" rel="noopener" class="project-link cyan">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+              Live App
+            </a>
+            <a href="https://github.com/RealBleedingLight/unravel" target="_blank" rel="noopener" class="project-link cyan">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Source Code
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Project 2: Tab Tutor -->
+  <section class="project-section">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label amber">Project 02</p>
+        <h2 class="section-title">Tab Tutor</h2>
+        <p class="section-description">
+          An AI-powered guitar learning workspace — transcriptions, technique breakdowns, theory context, and structured practice plans for intermediate players.
+        </p>
+      </div>
+
+      <div class="project-card fade-up delay-1">
+        <div class="project-header">
+          <h3 class="project-name" style="color: var(--accent-amber);">♬ Tab Tutor</h3>
+          <p class="project-tagline">Guitar tab workspace · AI analysis · Practice tracking · Music theory engine</p>
+        </div>
+        <div class="project-body">
+
+          <div class="project-why">
+            <h4>Why I Built This</h4>
+            <p>
+              Learning guitar solos from tabs alone is like reading sheet music without a teacher. You get the notes, but not the <em>why</em> — why this scale, why this technique, why this fingering. Tab Tutor bridges that gap by combining traditional tab notation with AI-powered analysis that breaks down every solo into technique-by-technique lessons, theory explanations, and structured practice plans with tempo milestones. It's the guitar teacher that's always available, always patient, and deeply understands music theory.
+            </p>
+          </div>
+
+          <h4 style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem;">Core Capabilities</h4>
+          <div class="features-grid">
+            <div class="feature-item amber">
+              <div class="feature-icon">🎸</div>
+              <h5>Smart Transcription</h5>
+              <p>Drop in Guitar Pro files or tabs — get auto-analyzed breakdowns with technique tags and theory context</p>
+            </div>
+            <div class="feature-item amber">
+              <div class="feature-icon">📋</div>
+              <h5>Structured Lessons</h5>
+              <p>Self-contained lesson files for each practice session, with tempo milestones and checkpoint assessments</p>
+            </div>
+            <div class="feature-item amber">
+              <div class="feature-icon">🧠</div>
+              <h5>Theory Engine</h5>
+              <p>Scales, modes, harmonic analysis — understand the "why" behind every note in the solo</p>
+            </div>
+            <div class="feature-item amber">
+              <div class="feature-icon">📈</div>
+              <h5>Progress Tracking</h5>
+              <p>Practice logs, context files, and tempo progression tracking across all songs</p>
+            </div>
+            <div class="feature-item amber">
+              <div class="feature-icon">🎵</div>
+              <h5>Song Library</h5>
+              <p>Megadeth, Dream Theater, Guthrie Govan, Gary Moore — prog metal to blues, all analyzed</p>
+            </div>
+            <div class="feature-item amber">
+              <div class="feature-icon">🔌</div>
+              <h5>Video Learning</h5>
+              <p>Paste a YouTube lesson URL — get a structured learning guide with concept cross-references</p>
+            </div>
+          </div>
+
+          <div class="tech-stack">
+            <span class="tech-pill amber">Python</span>
+            <span class="tech-pill amber">TypeScript</span>
+            <span class="tech-pill amber">FastAPI</span>
+            <span class="tech-pill amber">AI/LLM Integration</span>
+            <span class="tech-pill amber">Vercel</span>
+          </div>
+
+          <div class="roadmap">
+            <h4>Future Roadmap</h4>
+            <div class="roadmap-items">
+              <div class="roadmap-item">
+                <span class="roadmap-dot amber"></span>
+                <span>Interactive clickable fretboard with audio playback and scale visualization</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-dot amber"></span>
+                <span>Plugin architecture — community-contributed modules for ear training, rhythm, sight-reading</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-dot amber"></span>
+                <span>Built-in metronome and practice session timer</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-dot amber"></span>
+                <span>LLM-powered interactive Q&amp;A — ask questions about a solo mid-practice</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-dot amber"></span>
+                <span>Audio analysis and chord progression detection from recordings</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-links">
+            <a href="https://tab-tutor-x.vercel.app/login" target="_blank" rel="noopener" class="project-link amber">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+              Live App
+            </a>
+            <a href="https://github.com/RealBleedingLight/tab" target="_blank" rel="noopener" class="project-link amber">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Source Code
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- About & Contact -->
+  <section id="about">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label cyan">About</p>
+        <h2 class="section-title">A bit about me</h2>
+      </div>
+
+      <div class="about-grid fade-up delay-1">
+        <div class="about-text">
+          <p>
+            I'm a Product Manager who builds things. Not just specs and roadmaps — actual working products. I believe the best PMs understand the technology deeply enough to prototype, ship MVPs, and make real architectural decisions.
+          </p>
+          <p>
+            My projects reflect the problems I care about: making niche communities' workflows better (Cipher &amp; Signal for puzzle solvers) and using AI to transform how people learn complex skills (Tab Tutor for guitarists). I focus on privacy-first design, clean UX, and tools that respect the user's intelligence.
+          </p>
+          <p>
+            When I'm not shipping products, you'll find me learning guitar solos, solving ARGs, or diving deep into whatever rabbit hole the internet has to offer.
+          </p>
+        </div>
+
+        <div class="contact-card" id="contact">
+          <h3>Get In Touch</h3>
+          <div class="contact-list">
+            <a href="mailto:your.email@example.com" class="contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              </div>
+              your.email@example.com
+            </a>
+            <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener" class="contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </div>
+              LinkedIn
+            </a>
+            <a href="https://github.com/RealBleedingLight" target="_blank" rel="noopener" class="contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-text">© 2026 Leo. Built with intention.</p>
+      <div class="footer-links">
+        <a href="https://github.com/RealBleedingLight" target="_blank" rel="noopener">GitHub</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
