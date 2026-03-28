@@ -1,53 +1,65 @@
-// --- Scroll-triggered fade-in animations ---
-document.addEventListener('DOMContentLoaded', () => {
-  // Intersection Observer for fade-up elements
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-  );
+// ── CROSSWORD FILL ──
+const fillOrder = ['c-B','c-U','c-I','c-S','c-O','c-V','c-E','c-D','c-L'];
+let fi = 0;
+function fillNext() {
+  if (fi >= fillOrder.length) return;
+  const el = document.getElementById(fillOrder[fi++]);
+  if (el) el.classList.add('vis');
+  setTimeout(fillNext, fillOrder[fi-1] === 'c-D' ? 260 : 85);
+}
+setTimeout(fillNext, 500);
 
-  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+// ── CIPHER DECODE ──
+const target = "Solve problems. Build better things.";
+const syms = ['▲','■','◆','●','▼','◇','□','○','△','◈','◉','◎','◐','◑','◒','◓','◔','◕','◖','◗'];
+const tagEl = document.getElementById('heroTagline');
+let frame = 0, total = 32, decoding = false;
 
-  // --- Navbar scroll effect ---
-  const nav = document.querySelector('.nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  // --- Mobile nav toggle ---
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.querySelector('.nav-links');
-
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('open');
-      links.classList.toggle('open');
-    });
-
-    // Close menu on link click
-    links.querySelectorAll('a').forEach((a) => {
-      a.addEventListener('click', () => {
-        toggle.classList.remove('open');
-        links.classList.remove('open');
-      });
-    });
+function decode() {
+  if (!decoding) return;
+  if (frame >= total) {
+    tagEl.textContent = target;
+    decoding = false;
+    tagEl.style.opacity = '1';
+    return;
   }
+  let s = '';
+  for (let j = 0; j < target.length; j++) {
+    const revealed = j / target.length < (frame / total) - 0.04;
+    s += (revealed || target[j] === ' ') ? target[j] : syms[Math.floor(Math.random() * syms.length)];
+  }
+  tagEl.textContent = s;
+  frame++;
+  setTimeout(decode, 50);
+}
 
-  // --- Smooth scroll for anchor links ---
-  document.querySelectorAll('a[href^="#"]').forEach((a) => {
-    a.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
+function startDecode() {
+  if (decoding) return;
+  frame = 0;
+  decoding = true;
+  decode();
+}
+
+setTimeout(startDecode, 1100);
+
+tagEl.style.cursor = 'pointer';
+tagEl.title = 'Click to decode';
+tagEl.addEventListener('click', startDecode);
+
+// ── SCROLL CARD REVEAL ──
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.pcard').forEach(c => io.observe(c));
+
+// ── DUSK TOGGLE ──
+const btn = document.getElementById('modeBtn');
+btn.addEventListener('click', () => {
+  const isDusk = document.documentElement.classList.toggle('dusk');
+  btn.textContent = isDusk ? '◑ Light' : '◐ Dusk';
+  localStorage.setItem('theme', isDusk ? 'dusk' : 'light');
 });
+if (localStorage.getItem('theme') === 'dusk') {
+  document.documentElement.classList.add('dusk');
+  btn.textContent = '◑ Light';
+}
