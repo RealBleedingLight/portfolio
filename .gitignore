@@ -11,6 +11,11 @@
 # Duplicate subfolder (files live at root for GitHub Pages)
 portfolio/
 
+# Preview/scratch files not for the live site
+board-color-preview.html
+chalk-preview.html
+labs/images/
+
 # Environment files
 .env.local
 .env*.local
