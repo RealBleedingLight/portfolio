@@ -1,0 +1,52 @@
+/*
+ * fixes.css — Tech debt patches for portfolio
+ *
+ * Loaded after style.css. Contains targeted overrides only.
+ * Each section is labelled with the issue it addresses.
+ *
+ * Issues resolved:
+ *   [CARD-TEXT]     Remove pencil-edge SVG displacement filter from cards
+ *                   — feDisplacementMap scale=1.8 was warping text (glitchy look)
+ *                   — Pencil hatching background texture is retained; only the
+ *                     full-card warp is removed. Drop shadows preserved.
+ *   [BLUEPRINT]     Nudge blueprint opacity slightly higher for better visibility
+ */
+
+/* ── [CARD-TEXT] Strip feDisplacementMap warp from project cards ── */
+/* Keep drop-shadow depth; remove url(#pencil-edge) displacement     */
+
+.pcard {
+  filter:
+    drop-shadow(2px 4px 9px rgba(28,22,10,0.18))
+    drop-shadow(1px 1px 2px rgba(28,22,10,0.12));
+}
+.pcard:hover {
+  filter:
+    drop-shadow(3px 8px 16px rgba(28,22,10,0.24))
+    drop-shadow(1px 2px 4px rgba(28,22,10,0.16));
+}
+.pcard:active {
+  filter:
+    drop-shadow(1px 2px 5px rgba(28,22,10,0.14))
+    drop-shadow(0px 1px 1px rgba(28,22,10,0.10)) !important;
+}
+
+html.dusk .pcard {
+  filter:
+    drop-shadow(2px 4px 10px rgba(0,0,0,0.55))
+    drop-shadow(1px 1px 3px rgba(0,0,0,0.35));
+}
+html.dusk .pcard:hover {
+  filter:
+    drop-shadow(3px 8px 18px rgba(0,0,0,0.65))
+    drop-shadow(1px 2px 5px rgba(0,0,0,0.45));
+}
+html.dusk .pcard:active {
+  filter:
+    drop-shadow(1px 2px 5px rgba(0,0,0,0.38))
+    drop-shadow(0px 1px 1px rgba(0,0,0,0.25)) !important;
+}
+
+/* ── [BLUEPRINT] Slight opacity bump for visibility ── */
+.blueprint-bg          { opacity: .22; }
+html.dusk .blueprint-bg { opacity: .14; }

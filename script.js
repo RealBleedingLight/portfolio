@@ -56,10 +56,10 @@ document.querySelectorAll('.pcard').forEach(c => io.observe(c));
 const btn = document.getElementById('modeBtn');
 btn.addEventListener('click', () => {
   const isDusk = document.documentElement.classList.toggle('dusk');
-  btn.textContent = isDusk ? '◑ Light' : '◐ Dusk';
+  btn.textContent = isDusk ? '◑ Paper' : '◐ Chalk';
   localStorage.setItem('theme', isDusk ? 'dusk' : 'light');
 });
 if (localStorage.getItem('theme') === 'dusk') {
   document.documentElement.classList.add('dusk');
-  btn.textContent = '◑ Light';
+  btn.textContent = '◑ Paper';
 }

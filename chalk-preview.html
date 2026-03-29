@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Chalk Font Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Caveat:wght@400;700&family=Kalam:wght@300;400;700&family=Amatic+SC:wght@400;700&family=Shadows+Into+Light+Two&family=Patrick+Hand+SC&family=Reenie+Beanie&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --board:    #1b2218;
+      --board-lt: #212b1e;
+      --chalk:    #ede8d4;
+      --chalk2:   #c0baa6;
+      --faded:    #887e6c;
+      --yellow:   #e8d86a;
+      --border:   rgba(237,232,212,0.22);
+      --glow:     rgba(237,232,212,0.28);
+    }
+
+    html {
+      background:
+        radial-gradient(circle, rgba(237,232,212,0.030) 1px, transparent 1px),
+        linear-gradient(135deg,
+          rgba(237,232,212,0.016) 0%, transparent 40%,
+          rgba(237,232,212,0.010) 70%, transparent 100%),
+        var(--board);
+      background-size: 6px 6px, 100% 100%, 100% 100%;
+      min-height: 100vh;
+    }
+    body {
+      font-family: 'Courier Prime', monospace;
+      color: var(--chalk);
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 32px 80px;
+    }
+
+    .page-title {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--faded);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .page-sub {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--faded);
+      opacity: 0.6;
+      margin-bottom: 36px;
+    }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      box-shadow: 0 1px 0 rgba(237,232,212,0.04);
+      margin: 0 0 36px;
+    }
+
+    .font-block {
+      margin-bottom: 48px;
+      padding: 28px 28px 24px;
+      background:
+        repeating-linear-gradient(
+          -22deg, transparent 0px, transparent 3px,
+          rgba(237,232,212,0.044) 3px, rgba(237,232,212,0.044) 3.5px
+        ),
+        repeating-linear-gradient(
+          68deg, transparent 0px, transparent 14px,
+          rgba(237,232,212,0.015) 14px, rgba(237,232,212,0.015) 15px
+        ),
+        linear-gradient(148deg, #272e22 0%, #212a1d 30%, #1b2318 65%, #161c12 100%);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .font-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+
+    .font-label .current-tag {
+      background: rgba(232,216,106,0.15);
+      border: 1px solid rgba(232,216,106,0.3);
+      padding: 1px 6px;
+      font-size: 7px;
+      letter-spacing: 1px;
+      margin-left: 8px;
+      color: var(--yellow);
+      vertical-align: middle;
+    }
+
+    .sample-name {
+      display: block;
+      color: var(--chalk);
+      font-size: 54px;
+      line-height: 1.05;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+    .sample-section {
+      display: block;
+      color: var(--chalk);
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .sample-body {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--chalk2);
+      letter-spacing: 1px;
+      opacity: 0.7;
+    }
+
+    .variants {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .variant-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 7px;
+      letter-spacing: 2px;
+      color: var(--faded);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .v-name {
+      display: block;
+      color: var(--chalk);
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    /* ── CHALK EFFECT VARIANTS ── */
+    /* v1: minimal — just color */
+    .v-minimal { opacity: 0.90; }
+
+    /* v2: chalk dust — our current effect */
+    .v-dust {
+      opacity: 0.90;
+      text-shadow:
+        0 0 5px rgba(237,232,212,0.32),
+        1px 0 0 rgba(237,232,212,0.06),
+        -1px 0 0 rgba(237,232,212,0.06),
+        0 1px 0 rgba(237,232,212,0.04);
+    }
+
+    /* v3: heavy chalk — more visible texture */
+    .v-heavy {
+      opacity: 0.88;
+      text-shadow:
+        0 0 8px rgba(237,232,212,0.40),
+        2px 1px 0 rgba(237,232,212,0.08),
+        -2px -1px 0 rgba(237,232,212,0.06),
+        1px -1px 0 rgba(237,232,212,0.05),
+        -1px 1px 0 rgba(237,232,212,0.05),
+        0 0 2px rgba(237,232,212,0.50);
+    }
+
+    /* Per-font typography */
+    .font-rock-salt  .sample-name,
+    .font-rock-salt  .sample-section,
+    .font-rock-salt  .v-name  { font-family: 'Rock Salt', cursive; }
+
+    .font-caveat     .sample-name,
+    .font-caveat     .sample-section,
+    .font-caveat     .v-name  { font-family: 'Caveat', cursive; font-weight: 700; }
+
+    .font-kalam      .sample-name,
+    .font-kalam      .sample-section,
+    .font-kalam      .v-name  { font-family: 'Kalam', cursive; font-weight: 700; }
+
+    .font-amatic     .sample-name,
+    .font-amatic     .sample-section,
+    .font-amatic     .v-name  { font-family: 'Amatic SC', cursive; font-weight: 700; }
+
+    .font-shadows    .sample-name,
+    .font-shadows    .sample-section,
+    .font-shadows    .v-name  { font-family: 'Shadows Into Light Two', cursive; }
+
+    .font-rock-salt .sample-name  { font-size: 36px; }
+    .font-rock-salt .sample-section { font-size: 20px; }
+    .font-rock-salt .v-name  { font-size: 22px; }
+    .font-amatic    .sample-name  { font-size: 62px; }
+    .font-amatic    .sample-section { font-size: 32px; }
+    .font-shadows   .sample-name  { font-size: 58px; }
+
+    /* Apply our current chalk effect to all sample names */
+    .sample-name, .sample-section {
+      text-shadow:
+        0 0 5px rgba(237,232,212,0.32),
+        1px 0 0 rgba(237,232,212,0.06),
+        -1px 0 0 rgba(237,232,212,0.06),
+        0 1px 0 rgba(237,232,212,0.04);
+      opacity: 0.90;
+    }
+
+    .rating-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      font-family: 'Courier Prime', monospace;
+      font-size: 7px;
+      letter-spacing: 1.5px;
+      padding: 2px 8px;
+      border: 1px solid;
+      text-transform: uppercase;
+    }
+    .badge-texture  { border-color: rgba(152,184,212,0.4); color: rgba(152,184,212,0.8); }
+    .badge-readab   { border-color: rgba(237,232,212,0.3); color: rgba(237,232,212,0.6); }
+    .badge-rough    { border-color: rgba(232,216,106,0.4); color: rgba(232,216,106,0.8); }
+    .badge-clean    { border-color: rgba(192,186,166,0.3); color: rgba(192,186,166,0.6); }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer span {
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--faded);
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+<p class="page-title">Chalk Font Comparison</p>
+<p class="page-sub">All shown with blackboard background + chalk dust CSS effect — same as the live site</p>
+<hr class="rule">
+
+<!-- ── ROCK SALT ── -->
+<div class="font-block font-rock-salt">
+  <div class="font-label">01. Rock Salt <span style="color:var(--chalk2);opacity:.6;font-size:7px;letter-spacing:1px;">— google fonts</span></div>
+  <span class="sample-name">Leonard A.L.</span>
+  <span class="sample-section">Projects</span>
+  <p class="sample-body">MOST AUTHENTIC CHALK TEXTURE — rough, imperfect letterforms, looks like real chalk on slate</p>
+  <div class="variants">
+    <div>
+      <div class="variant-label">No effect</div>
+      <span class="v-name v-minimal">Leonard A.L.</span>
+    </div>
+    <div>
+      <div class="variant-label">Chalk dust (current)</div>
+      <span class="v-name v-dust">Leonard A.L.</span>
+    </div>
+    <div>
+      <div class="variant-label">Heavy chalk</div>
+      <span class="v-name v-heavy">Leonard A.L.</span>
+    </div>
+  </div>
+  <div class="rating-row">
+    <span class="badge badge-rough">Very rough</span>
+    <span class="badge badge-texture">Most textured</span>
+    <span class="badge badge-readab">Harder to read at small sizes</span>
+  </div>
+</div>
+
+<!-- ── CAVEAT (CURRENT) ── -->
+<div class="font-block font-caveat">
+  <div class="font-label">02. Caveat Bold <span class="current-tag">CURRENTLY LIVE</span></div>
+  <span class="sample-name">Leonard A.L.</span>
+  <span class="sample-section">Projects</span>
+  <p class="sample-body">CLEAN HANDWRITTEN — flowing, informal, legible at all sizes, less rough than real chalk</p>
+  <div class="variants">
+    <div>
+      <div class="variant-label">No effect</div>
+      <span class="v-name v-minimal">Leonard A.L.</span>
+    </div>
+    <div>
+      <div class="variant-label">Chalk dust (current)</div>
+      <span class="v-name v-dust">Leonard A.L.</span>
+    </div>
+    <div>
+      <div class="variant-label">Heavy chalk</div>
+      <span class="v-name v-heavy">Leonard A.L.</span>
+    </div>
+  </div>
+  <div class="rating-row">
+    <span class="badge badge-clean">Very clean</span>
+    <span class="badge badge-readab">Highly legible</span>
+    <span class="badge badge-texture">Minimal texture</span>
+  </div>
+</div>
+
+<!-- ── KALAM ── -->
+<div class="font-block font-kalam">
+  <div class="font-label">03. Kalam Bold <span style="color:var(--chalk2);opacity:.6;font-size:7px;letter-spacing:1px;">— google fonts</span></div>
+  <span class="sample-name">Leonard A.L.</span>
+  <span class="sample-section">Projects</span>
+  <p class="sample-body">HANDWRITTEN WITH EDGES — slightly rough stroke endings, middle ground between Caveat and Rock Salt</p>
+  <div class="variants">
+    <div>
+      <div class="variant-label">No effect</div>
+      <span class="v-name v-minimal">Leonard A.L.</span>
+    </div>
+    <div>
+      <div class="variant-label">Chalk dust (current)</div>
+      <span class="v-name v-dust">Leonard A.L.</span>
+    </div>
+    <div>
+      <div class="variant-label">Heavy chalk</div>
+      <span class="v-name v-heavy">Leonard A.L.</span>
+    </div>
+  </div>
+  <div class="rating-row">
+    <span class="badge badge-rough">Slightly rough</span>
+    <span class="badge badge-readab">Good legibility</span>
+    <span class="badge badge-texture">Medium texture</span>
+  </div>
+</div>
+
+<!-- ── AMATIC SC ── -->
+<div class="font-block font-amatic">
+  <div class="font-label">04. Amatic SC Bold <span style="color:var(--chalk2);opacity:.6;font-size:7px;letter-spacing:1px;">— google fonts</span></div>
+  <span class="sample-name">Leonard A.L.</span>
+  <span class="sample-section">Projects</span>
+  <p class="sample-body">TALL THIN CHALK — narrow condensed caps, each letter looks individually hand-drawn, elegant + delicate</p>
+  <div class="variants">
+    <div>
+      <div class="variant-label">No effect</div>
+      <span class="v-name v-minimal">Leonard A.L.</span>
+    </div>
+    <div>
+      <div class="variant-label">Chalk dust (current)</div>
+      <span class="v-name v-dust">Leonard A.L.</span>
+    </div>
+    <div>
+      <div class="variant-label">Heavy chalk</div>
+      <span class="v-name v-heavy">Leonard A.L.</span>
+    </div>
+  </div>
+  <div class="rating-row">
+    <span class="badge badge-clean">Thin strokes</span>
+    <span class="badge badge-readab">Good at large sizes</span>
+    <span class="badge badge-rough">Irregular letterforms</span>
+  </div>
+</div>
+
+<!-- ── SHADOWS INTO LIGHT TWO ── -->
+<div class="font-block font-shadows">
+  <div class="font-label">05. Shadows Into Light Two <span style="color:var(--chalk2);opacity:.6;font-size:7px;letter-spacing:1px;">— google fonts</span></div>
+  <span class="sample-name">Leonard A.L.</span>
+  <span class="sample-section">Projects</span>
+  <p class="sample-body">CASUAL CHALK PRINT — light, airy, slightly scratchy letterforms, informal teacher's-handwriting vibe</p>
+  <div class="variants">
+    <div>
+      <div class="variant-label">No effect</div>
+      <span class="v-name v-minimal">Leonard A.L.</span>
+    </div>
+    <div>
+      <div class="variant-label">Chalk dust (current)</div>
+      <span class="v-name v-dust">Leonard A.L.</span>
+    </div>
+    <div>
+      <div class="variant-label">Heavy chalk</div>
+      <span class="v-name v-heavy">Leonard A.L.</span>
+    </div>
+  </div>
+  <div class="rating-row">
+    <span class="badge badge-texture">Scratchy feel</span>
+    <span class="badge badge-readab">Airy + light</span>
+    <span class="badge badge-clean">Single weight</span>
+  </div>
+</div>
+
+<footer>
+  <span>← TEMP PREVIEW — delete chalk-preview.html when done</span>
+  <span>CHALK FONT COMPARISON — 2026</span>
+</footer>
+
+</body>
+</html>

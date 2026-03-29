@@ -25,24 +25,47 @@
   --dot-col:   rgba(28,22,10,0.07);
 }
 
-/* ── DUSK THEME — dark newsprint ── */
+/* ── BLACKBOARD THEME — chalk on board ── */
 html.dusk {
-  --bg:        #1e1c14;
-  --paper:     #18160e;
-  --card-bg:   #252218;
-  --ink:       #eee8d8;
-  --ink2:      #c8c0a8;
-  --faded:     #807860;
-  --border:    #3e3a2a;
-  --gold:      #c09030;
-  --gold-lt:   #d8a848;
-  --blue:      #6888aa;
-  --blue-dim:  rgba(104,136,170,0.09);
-  --grid-ln:   rgba(220,210,180,0.07);
-  --btn-bg:    #eee8d8;
-  --btn-txt:   #1a1810;
-  --staff-ln:  #3e3a2a;
-  --dot-col:   rgba(220,210,180,0.055);
+
+  /* ┌─────────────────────────────────────────────────────────────┐
+     │  BOARD COLOR — change these two to repaint the blackboard   │
+     │                                                             │
+     │  Options tried:                                             │
+     │    Green board   #1b2218  (noticeable green tint)           │
+     │    Dark slate    #141814  (very faint green, almost black)  │
+     │    Near-black ✓  #0f1210  (current — trace of green)        │
+     │    Pure black    #111111  (no color identity)               │
+     │                                                             │
+     │  --bg    = main board surface                               │
+     │  --paper = slightly darker recessed surface                 │
+     └─────────────────────────────────────────────────────────────┘ */
+  --bg:        #0f1210;   /* ← BOARD COLOR — change this */
+  --paper:     #0b0e0b;   /* ← BOARD RECESS — usually 4-5 shades darker than --bg */
+
+  --card-bg:   #151a13;
+  --ink:       #ede8d4;
+  --ink2:      #c0baa6;
+  --faded:     #887e6c;
+  --border:    rgba(237,232,212,0.22);
+  --gold:      #e8d86a;
+  --gold-lt:   #f0e48c;
+  --blue:      #98b8d4;
+  --blue-dim:  rgba(152,184,212,0.09);
+  --grid-ln:   rgba(237,232,212,0.07);
+  --btn-bg:    #ede8d4;
+  --btn-txt:   #0f1210;
+  --staff-ln:  rgba(237,232,212,0.26);
+  --dot-col:   rgba(237,232,212,0.030);
+
+  /* Blackboard surface: chalk dust dots + subtle wipe streak */
+  background:
+    radial-gradient(circle, var(--dot-col) 1px, transparent 1px),
+    linear-gradient(135deg,
+      rgba(237,232,212,0.016) 0%, transparent 40%,
+      rgba(237,232,212,0.010) 70%, transparent 100%),
+    var(--bg);
+  background-size: 6px 6px, 100% 100%, 100% 100%;
 }
 
 html {
@@ -171,12 +194,13 @@ html.dusk .hero-crease {
   background:
     linear-gradient(90deg,
       transparent 0%,
-      rgba(220,210,180,0.05) 8%,
-      rgba(220,210,180,0.08) 40%,
-      rgba(255,255,255,0.07) 50%,
-      rgba(220,210,180,0.04) 60%,
+      rgba(237,232,212,0.04) 8%,
+      rgba(237,232,212,0.07) 40%,
+      rgba(237,232,212,0.05) 50%,
+      rgba(237,232,212,0.03) 60%,
       transparent 100%
     );
+  box-shadow: 0 1px 0 rgba(237,232,212,0.06), 0 -1px 0 rgba(237,232,212,0.03);
 }
 
 .blueprint-bg {
@@ -188,13 +212,13 @@ html.dusk .hero-crease {
   opacity: .18;
   transition: opacity .35s;
 }
-html.dusk .blueprint-bg { opacity: .09; }
+html.dusk .blueprint-bg { opacity: .11; }
 html.dusk .blueprint-bg line,
 html.dusk .blueprint-bg rect,
 html.dusk .blueprint-bg circle,
 html.dusk .blueprint-bg ellipse,
-html.dusk .blueprint-bg path { stroke: #7a9fcc !important; }
-html.dusk .blueprint-bg text { fill: #7a9fcc !important; }
+html.dusk .blueprint-bg path { stroke: #98b8d4 !important; }
+html.dusk .blueprint-bg text { fill: #98b8d4 !important; }
 
 .hero-content { position: relative; z-index: 2; }
 
@@ -448,41 +472,42 @@ html.dusk .pcard {
   background:
     repeating-linear-gradient(
       -22deg, transparent 0px, transparent 3px,
-      rgba(220,210,180,0.060) 3px, rgba(220,210,180,0.060) 3.5px
+      rgba(237,232,212,0.048) 3px, rgba(237,232,212,0.048) 3.5px
     ),
     repeating-linear-gradient(
       -22deg, transparent 0px, transparent 9px,
-      rgba(220,210,180,0.030) 9px, rgba(220,210,180,0.030) 10px
+      rgba(237,232,212,0.024) 9px, rgba(237,232,212,0.024) 10px
     ),
     repeating-linear-gradient(
       68deg, transparent 0px, transparent 14px,
-      rgba(220,210,180,0.020) 14px, rgba(220,210,180,0.020) 15px
+      rgba(237,232,212,0.016) 14px, rgba(237,232,212,0.016) 15px
     ),
-    linear-gradient(148deg, #2c2820 0%, #252118 30%, #1e1a12 65%, #18150e 100%);
-  border-color: rgba(220,210,180,0.16);
+    /* ↓ CARD BASE GRADIENT — keep these ~4-8 shades lighter than --bg */
+    linear-gradient(148deg, #1a1f17 0%, #151910 30%, #0f1210 65%, #0c0e09 100%);
+  border: 1px solid rgba(237,232,212,0.20);
   filter:
     url(#pencil-edge)
-    drop-shadow(2px 4px 10px rgba(0,0,0,0.45))
-    drop-shadow(1px 1px 2px rgba(0,0,0,0.28));
+    drop-shadow(2px 4px 10px rgba(0,0,0,0.55))
+    drop-shadow(1px 1px 3px rgba(0,0,0,0.35));
 }
 html.dusk .pcard::before {
   background:
-    linear-gradient(180deg, rgba(220,210,180,0.22) 0%, rgba(220,210,180,0.05) 8%, transparent 20%),
-    linear-gradient(90deg,  rgba(220,210,180,0.16) 0%, rgba(220,210,180,0.04) 7%, transparent 18%),
-    linear-gradient(0deg,   rgba(0,0,0,0.28) 0%,   rgba(0,0,0,0.07) 10%, transparent 22%),
-    linear-gradient(270deg, rgba(0,0,0,0.20) 0%,   rgba(0,0,0,0.05) 8%,  transparent 18%);
+    linear-gradient(180deg, rgba(237,232,212,0.18) 0%, rgba(237,232,212,0.05) 8%, transparent 20%),
+    linear-gradient(90deg,  rgba(237,232,212,0.13) 0%, rgba(237,232,212,0.03) 7%, transparent 18%),
+    linear-gradient(0deg,   rgba(0,0,0,0.22) 0%,   rgba(0,0,0,0.06) 10%, transparent 22%),
+    linear-gradient(270deg, rgba(0,0,0,0.16) 0%,   rgba(0,0,0,0.04) 8%,  transparent 18%);
 }
 html.dusk .pcard:hover {
   filter:
     url(#pencil-edge)
-    drop-shadow(3px 8px 18px rgba(0,0,0,0.58))
-    drop-shadow(1px 2px 4px rgba(0,0,0,0.38));
+    drop-shadow(3px 8px 18px rgba(0,0,0,0.65))
+    drop-shadow(1px 2px 5px rgba(0,0,0,0.45));
 }
 html.dusk .pcard:active {
   filter:
     url(#pencil-edge)
-    drop-shadow(1px 2px 5px rgba(0,0,0,0.32))
-    drop-shadow(0px 1px 1px rgba(0,0,0,0.22)) !important;
+    drop-shadow(1px 2px 5px rgba(0,0,0,0.38))
+    drop-shadow(0px 1px 1px rgba(0,0,0,0.25)) !important;
 }
 
 .pcard .card-num {
@@ -518,8 +543,8 @@ html.dusk .pcard:active {
   font-size: 8px; color: var(--ink2); letter-spacing: 1px;
 }
 html.dusk .pcard .tag {
-  background: rgba(200,180,140,0.06);
-  border-color: var(--border); color: var(--ink2);
+  background: rgba(237,232,212,0.06);
+  border-color: rgba(237,232,212,0.18); color: var(--ink2);
 }
 .pcard .card-link {
   display: inline-block; margin-top: 10px; position: relative;
@@ -599,4 +624,93 @@ html.dusk .pcard .tag {
 @keyframes morse-pulse {
   0%, 100% { opacity: .5; }
   50%       { opacity: 1; }
+}
+
+/* ── BLACKBOARD MODE — chalk typography & line effects ── */
+
+/* Rock Salt headings: heavy chalk dust — rough imperfect letterforms */
+html.dusk .hero-name {
+  font-family: 'Rock Salt', cursive;
+  font-size: 38px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  opacity: 0.88;
+  text-shadow:
+    0 0 8px rgba(237,232,212,0.40),
+    2px 1px 0 rgba(237,232,212,0.08),
+    -2px -1px 0 rgba(237,232,212,0.06),
+    1px -1px 0 rgba(237,232,212,0.05),
+    -1px 1px 0 rgba(237,232,212,0.05),
+    0 0 2px rgba(237,232,212,0.50);
+}
+html.dusk .sec-title-text {
+  font-family: 'Rock Salt', cursive;
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.88;
+  text-shadow:
+    0 0 6px rgba(237,232,212,0.38),
+    2px 1px 0 rgba(237,232,212,0.07),
+    -2px -1px 0 rgba(237,232,212,0.05),
+    1px -1px 0 rgba(237,232,212,0.04),
+    -1px 1px 0 rgba(237,232,212,0.04),
+    0 0 2px rgba(237,232,212,0.45);
+}
+html.dusk .pcard .card-title {
+  font-family: 'Rock Salt', cursive;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0.88;
+  text-shadow:
+    0 0 5px rgba(237,232,212,0.35),
+    1px 1px 0 rgba(237,232,212,0.06),
+    -1px -1px 0 rgba(237,232,212,0.05),
+    0 0 2px rgba(237,232,212,0.42);
+}
+
+/* Decode tagline + cipher strip: boost visibility in chalk mode */
+html.dusk .hero-decode {
+  color: var(--ink);
+  opacity: 0.82;
+  text-shadow:
+    0 0 4px rgba(237,232,212,0.22),
+    1px 0 0 rgba(237,232,212,0.04),
+    -1px 0 0 rgba(237,232,212,0.04);
+}
+
+/* Kalam nav logo: handwritten chalk, lighter touch */
+html.dusk .nav-logo {
+  font-family: 'Kalam', cursive;
+  font-size: 22px;
+  font-weight: 700;
+  text-shadow:
+    0 0 4px rgba(237,232,212,0.28),
+    1px 0 0 rgba(237,232,212,0.05),
+    -1px 0 0 rgba(237,232,212,0.05);
+}
+
+/* Chalk rule: masthead becomes a chalk line with faint dusty halo */
+html.dusk .masthead-rule {
+  box-shadow: 0 1px 1px rgba(237,232,212,0.06), 0 -1px 0 rgba(237,232,212,0.04);
+}
+
+/* Chalk section rule: top border of section banner looks like a chalk line */
+html.dusk .sec-banner {
+  border-top-color: rgba(237,232,212,0.40);
+  box-shadow: 0 -1px 0 rgba(237,232,212,0.07);
+}
+
+/* Footer top rule as chalk line */
+html.dusk .site-footer {
+  border-top-color: rgba(237,232,212,0.40);
+}
+
+/* ── CHALK CURSOR — replaces magnifying glass in blackboard mode ──
+   SVG: angled chalk stick, cream body, left highlight, right shadow,
+   worn flat tip, two chalk-dust dots near the point.
+   Hotspot = writing tip at (5, 26).                               */
+html.dusk *,
+html.dusk *::before,
+html.dusk *::after {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='2' cy='30' r='1.2' fill='rgba(237,232,212,0.52)'/%3E%3Ccircle cx='5' cy='31' r='0.7' fill='rgba(237,232,212,0.32)'/%3E%3Ccircle cx='0' cy='28' r='0.6' fill='rgba(237,232,212,0.28)'/%3E%3Cpath d='M6,26 L16,2 L24,5 L14,29 Z' fill='rgba(15,18,16,0.48)'/%3E%3Cpath d='M5,26 L15,2 L23,5 L13,29 Z' fill='%23e2ddd2'/%3E%3Cpath d='M5,26 L15,2 L17,3 L7,27 Z' fill='rgba(255,255,255,0.42)'/%3E%3Cpath d='M17,3 L23,5 L13,29 L10,28 Z' fill='rgba(0,0,0,0.14)'/%3E%3Cpath d='M5,26 L7,27 L10,28 L13,29 L10,30 L3,27 Z' fill='%23b8b4a8'/%3E%3Cline x1='15' y1='2' x2='23' y2='5' stroke='%23a6a296' stroke-width='1.5' stroke-linecap='butt'/%3E%3C/svg%3E") 5 26, crosshair !important;
 }
