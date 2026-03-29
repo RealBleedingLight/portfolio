@@ -8,6 +8,9 @@
 .wolf/
 .claude/settings.local.json
 
+# Duplicate subfolder (files live at root for GitHub Pages)
+portfolio/
+
 # Environment files
 .env.local
 .env*.local
