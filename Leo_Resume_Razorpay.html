@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leonard A.L. - Product Manager</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --color-bg:        #ffffff;
+    --color-text:      #2d3748;
+    --color-text-mid:  #4a5568;
+    --color-muted:     #64748b;
+    --color-heading:   #1a365d;
+    --color-border:    #cbd5e0;
+    --color-header-border: #1a365d;
+    --color-sidebar-bg:    #f0f4f8;
+    --color-sidebar-border:#dce3ed;
+    --color-accent:    #1a365d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 9pt;
+    line-height: 1.36;
+    color: var(--color-text);
+    max-width: 8.5in;
+    height: 11in;
+    margin: 0 auto;
+    padding: 0;
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+
+  /* Header */
+  .header {
+    padding: 0.32in 0.5in 0.18in;
+    border-bottom: 2.5px solid var(--color-header-border);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 22pt;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 2px;
+    color: var(--color-heading);
+  }
+
+  .tagline {
+    font-size: 8.5pt;
+    color: var(--color-muted);
+    font-style: italic;
+    margin-top: 1px;
+  }
+
+  .contact {
+    text-align: right;
+    font-size: 8pt;
+    color: var(--color-text-mid);
+    line-height: 1.65;
+    white-space: nowrap;
+  }
+
+  .contact a { color: var(--color-text-mid); text-decoration: none; }
+
+  /* Two-column body */
+  .body-wrap {
+    display: flex;
+    gap: 0;
+    height: calc(11in - 0.95in);
+  }
+
+  .main {
+    flex: 1;
+    padding: 0.22in 0.28in 0.25in 0.5in;
+  }
+
+  .sidebar {
+    width: 2.55in;
+    background: var(--color-sidebar-bg);
+    padding: 0.22in 0.35in 0.25in 0.3in;
+    border-left: 1px solid var(--color-sidebar-border);
+  }
+
+  /* Section titles */
+  .section { margin-bottom: 8px; }
+
+  .section-title {
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: var(--color-heading);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+  }
+
+  /* Summary */
+  .summary {
+    font-size: 8.5pt;
+    color: var(--color-text-mid);
+    line-height: 1.45;
+  }
+
+  /* Jobs */
+  .job { margin-bottom: 7px; }
+  .job:last-child { margin-bottom: 0; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .job-title { font-weight: 700; font-size: 9pt; color: var(--color-heading); }
+  .job-date  { font-size: 8pt; color: var(--color-muted); white-space: nowrap; }
+  .job-co    { font-size: 8pt; color: var(--color-muted); margin-bottom: 2px; }
+
+  ul { padding-left: 13px; }
+
+  li {
+    margin-bottom: 1.5px;
+    font-size: 8.5pt;
+    color: var(--color-text);
+    line-height: 1.36;
+  }
+
+  li b { font-weight: 600; color: var(--color-accent); }
+
+  /* Sidebar items */
+  .sidebar .section { margin-bottom: 10px; }
+
+  .skill-cat {
+    font-weight: 600;
+    color: var(--color-heading);
+    display: block;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-top: 3px;
+  }
+
+  .skill-cat:first-child { margin-top: 0; }
+
+  .skill-val {
+    font-size: 8pt;
+    color: var(--color-text-mid);
+  }
+
+  .info-line {
+    font-size: 8pt;
+    margin-bottom: 2px;
+    line-height: 1.4;
+    color: var(--color-text);
+  }
+
+  .info-line strong { font-weight: 600; }
+  .muted { color: var(--color-muted); font-size: 7.5pt; }
+
+  /* Sidebar projects */
+  .side-project { margin-bottom: 6px; }
+  .side-project:last-child { margin-bottom: 0; }
+
+  .side-project-name {
+    font-weight: 700;
+    font-size: 8pt;
+    color: var(--color-heading);
+    display: block;
+  }
+
+  .side-project-stack {
+    font-size: 7pt;
+    color: var(--color-muted);
+    font-style: italic;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .side-project-desc {
+    font-size: 7.5pt;
+    color: var(--color-text-mid);
+    line-height: 1.38;
+  }
+
+  /* Hobbies */
+  .hobby-list {
+    font-size: 8pt;
+    color: var(--color-text-mid);
+    line-height: 1.5;
+  }
+
+  /* Print */
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sidebar { background: var(--color-sidebar-bg) !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <h1>LEONARD A.L.</h1>
+      <div class="tagline">Product Manager & Builder. I take things apart to learn how they work, then build them better.</div>
+    </div>
+    <div class="contact">
+      leonardluke.aluri@gmail.com<br>
+      <a href="https://linkedin.com/in/YOUR-LINKEDIN">linkedin.com/in/YOUR-LINKEDIN</a><br>
+      <a href="https://realbleedinglight.github.io/portfolio/">realbleedinglight.github.io/portfolio</a>
+    </div>
+  </div>
+</div>
+
+<div class="body-wrap">
+
+<div class="main">
+
+  <div class="section">
+    <div class="section-title">Summary</div>
+    <div class="summary">
+      Product Manager with 4+ years across enterprise SaaS, platform scaling, and AI-powered products.
+      Re-architected a 150K-installation platform into a multi-tenant system serving 8 organizations.
+      Built and shipped AI/LLM products end-to-end with Claude Code, Python, and FastAPI.
+      Comfortable in ambiguity, obsessive about customer problems, and happiest when building.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Experience</div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Product Manager - Platform & Integrations</span>
+        <span class="job-date">Nov 2025 - Present</span>
+      </div>
+      <div class="job-co">Kazam EV Tech, Bangalore</div>
+      <ul>
+        <li>Own the core installation platform (<b>150,000+ installations</b>) and led re-architecture into a <b>multi-tenant system serving 8 organizations</b>, enabling scalable enterprise onboarding without per-client customization.</li>
+        <li>Product Lead for Kazam's largest strategic client: defined scope, built product readiness for go-to-market, and coordinated a <b>year-long cross-functional delivery</b> across mobile, SDK, firmware, and backend teams.</li>
+        <li>Built <b>self-serve analytics dashboards</b> (Redash + Claude Code) adopted by sales, operations, and finance, eliminating recurring manual data requests and enabling on-demand client-facing reporting.</li>
+        <li>Created strategic <b>sales enablement playbooks</b> with customer research frameworks and product positioning tailored to each client's value propositions.</li>
+        <li>Drove international expansion into <b>Saudi Arabia (300-charger network)</b>, adapting the platform to regional regulatory requirements and standardizing API contracts for partner integrations.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Product Manager - Integration Development</span>
+        <span class="job-date">Jun 2023 - Nov 2025</span>
+      </div>
+      <div class="job-co">Planview (Tasktop) - Enterprise Value Stream Management</div>
+      <ul>
+        <li>Owned the integration onboarding experience across enterprise toolchains (Jira, ServiceNow, Azure DevOps): designed reusable API templates and self-serve workflows with guided setup, <b>reducing onboarding tickets by 40%</b> and cutting time-to-value for new customers.</li>
+        <li>Identified a gap in support efficiency and drove the integration of an <b>AI Copilot into support workflows</b> using historical case data and documentation retrieval, cutting resolution times and improving customer satisfaction.</li>
+        <li>Ran regular customer debugging sessions to uncover integration pain points, then prioritized and fed findings into the product roadmap, <b>directly influencing engineering sprint priorities</b>.</li>
+        <li>Defined and shipped automation workflows across the platform that <b>reduced manual operational effort by 45%</b> and <b>improved first-response SLA adherence by 50%</b>.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Analyst (Product)</span>
+        <span class="job-date">Jun 2022 - Jun 2023</span>
+      </div>
+      <div class="job-co">GreyB - IP Research & Analytics</div>
+      <ul>
+        <li>Optimized search workflows and query precision for Slate (GreyB's patent search platform), <b>reducing research cycles by 15%</b> and boosting legal team productivity.</li>
+        <li>Partnered with patent lawyers and enterprise clients to translate legal requirements into streamlined search strategies, reducing review iterations.</li>
+        <li>Identified usability gaps through user feedback and influenced key product enhancements, aligning the platform's evolution with customer needs.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="sidebar">
+
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <span class="skill-cat">AI & Tools</span>
+    <div class="skill-val">Claude Code, LLM APIs, Prompt Engineering, Redash, Power BI</div>
+    <span class="skill-cat">Languages</span>
+    <div class="skill-val">Python, TypeScript, JavaScript, SQL</div>
+    <span class="skill-cat">APIs & Infra</span>
+    <div class="skill-val">REST, Webhooks, FastAPI, Vercel, GitHub, CI/CD</div>
+    <span class="skill-cat">Product</span>
+    <div class="skill-val">Roadmapping, PRDs, OKRs, Sprint Planning, A/B Testing, Figma, Jira</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Projects</div>
+
+    <div class="side-project">
+      <span class="side-project-name">Tab Tutor</span>
+      <span class="side-project-stack">Python, TypeScript, FastAPI, LLM APIs, Claude Code</span>
+      <div class="side-project-desc">AI guitar learning platform. Sole builder: FastAPI backend, TypeScript frontend, <b>LLM-powered lesson generation</b> from Guitar Pro files with technique breakdowns and progress tracking.</div>
+    </div>
+
+    <div class="side-project">
+      <span class="side-project-name">Cipher & Signal</span>
+      <span class="side-project-stack">JavaScript, HTML, CSS, Client-Side Only</span>
+      <div class="side-project-desc">Privacy-first CTF/ARG toolkit: <b>6 modules</b> covering steganography, audio forensics, cipher engine (10+ algorithms), encoding hub, visual ciphers, and a collaborative notebook. Zero tracking, zero server cost.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="info-line"><strong>M.Tech - Design</strong><br>NIT Silchar <span class="muted">| 9.71 GPA</span></div>
+    <div class="info-line" style="margin-top: 4px;"><strong>B.E - Mechanical</strong><br>Osmania University</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Leadership</div>
+    <div class="info-line">Captain, Team of 27<br><span class="muted">ROBOCON 2019</span></div>
+    <div class="info-line" style="margin-top: 3px;">President, Toastmasters Club<br><span class="muted">GreyB Research</span></div>
+    <div class="info-line" style="margin-top: 3px;">Circle Lead (Volunteer)<br><span class="muted">U&I Foundation</span></div>
+    <div class="info-line" style="margin-top: 3px;">Project Advisor<br><span class="muted">NIT Silchar</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Interests</div>
+    <div class="hobby-list">
+      Lead Guitarist<br>
+      Cybersecurity Enthusiast<br>
+      Avid Reader
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

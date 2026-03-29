@@ -1,0 +1,20 @@
+# System files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Claude Code sessions and internal docs
+.superpowers/
+.wolf/
+.claude/settings.local.json
+
+# Environment files
+.env.local
+.env*.local
+
+# Dependencies (if any)
+node_modules/
+
+# IDE
+.vscode/
+.idea/
